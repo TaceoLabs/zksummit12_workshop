@@ -1,0 +1,23 @@
+# secret shares the inputs for the three MPC nodes
+split-input:
+	co-circom split-input --circuit mill_problem.circom --input input.alice.json --protocol REP3 --out-dir out/secret_shared_inputs/ --curve BN254
+	RUST_LOG="error" co-circom split-input --circuit mill_problem.circom --input input.bob.json --protocol REP3 --out-dir out/secret_shared_inputs/ --curve BN254
+
+# For each MPC node, merges the secret shared inputs of Alice and Bob
+merge-input:
+	co-circom merge-input-shares --inputs out/secret_shared_inputs/input.alice.json.0.shared --inputs out/secret_shared_inputs/input.bob.json.0.shared --protocol REP3 --out out/merged_inputs/input.json.0.shared --curve BN254
+	RUST_LOG="error" co-circom merge-input-shares --inputs out/secret_shared_inputs/input.alice.json.1.shared --inputs out/secret_shared_inputs/input.bob.json.1.shared --protocol REP3 --out out/merged_inputs/input.json.1.shared --curve BN254
+	RUST_LOG="error" co-circom merge-input-shares --inputs out/secret_shared_inputs/input.alice.json.2.shared --inputs out/secret_shared_inputs/input.bob.json.2.shared --protocol REP3 --out out/merged_inputs/input.json.2.shared --curve BN254
+
+
+# runs the extended witness generation on three nodes
+run-witness-generation:
+	co-circom generate-witness --input out/merged_inputs/input.json.0.shared --circuit mill_problem.circom --protocol REP3 --config ../../configs/party0.toml --out out/witness/witness.wtns.0.shared --curve BN254 &
+	RUST_LOG="error" co-circom generate-witness --input out/merged_inputs/input.json.1.shared --circuit mill_problem.circom --protocol REP3 --config ../../configs/party1.toml --out out/witness/witness.wtns.1.shared --curve BN254 &
+	RUST_LOG="error" co-circom generate-witness --input out/merged_inputs/input.json.2.shared --circuit mill_problem.circom --protocol REP3 --config ../../configs/party2.toml --out out/witness/witness.wtns.2.shared --curve BN254
+
+# runs the proof generation on three nodes
+run-proof-groth16:
+	co-circom generate-proof --witness out/witness/witness.wtns.0.shared --zkey mill_problem.zkey --protocol REP3 --config ../../configs/party0.toml --out out/proofs/proof.0.json --public-input out/proofs/public_input.0.json groth16 --curve BN254 &
+	RUST_LOG="error" co-circom generate-proof --witness out/witness/witness.wtns.1.shared --zkey mill_problem.zkey --protocol REP3 --config ../../configs/party1.toml --out out/proofs/proof.1.json --public-input out/proofs/public_input.1.json groth16 --curve BN254 &
+	RUST_LOG="error" co-circom generate-proof --witness out/witness/witness.wtns.2.shared --zkey mill_problem.zkey --protocol REP3 --config ../../configs/party2.toml --out out/proofs/proof.2.json --public-input out/proofs/public_input.2.json groth16 --curve BN254
