@@ -218,13 +218,13 @@ just run-generate-witness
 ### Generating the Proof
 ```bash
 # start party 0
-co-noir generate-proof --witness out/witness/witness.wtns.0.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party0.toml --out out/proofs/proof.0.json --public-input out/proofs/public_input.0.json --circuit target/poseidon.json 
+co-noir generate-proof --witness out/witness/witness.wtns.0.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party0.toml --out out/proofs/proof.0.dat --public-input out/proofs/public_input.0.json --circuit target/poseidon.json 
 
 # start party 1
-co-noir generate-proof --witness out/witness/witness.wtns.1.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party1.toml --out out/proofs/proof.1.json --public-input out/proofs/public_input.1.json --circuit target/poseidon.json
+co-noir generate-proof --witness out/witness/witness.wtns.1.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party1.toml --out out/proofs/proof.1.dat --public-input out/proofs/public_input.1.json --circuit target/poseidon.json
 
 # start party 2
-co-noir generate-proof --witness out/witness/witness.wtns.2.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party2.toml --out out/proofs/proof.2.json --public-input out/proofs/public_input.2.json --circuit target/poseidon.json
+co-noir generate-proof --witness out/witness/witness.wtns.2.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party2.toml --out out/proofs/proof.2.dat --public-input out/proofs/public_input.2.json --circuit target/poseidon.json
 
 ```
 or use the `justfile`
@@ -245,6 +245,6 @@ co-noir create-vk --circuit target/poseidon.json --crs bn254_g1.dat --vk verific
 Finally verify the proof:
 ```bash
 # verify proof
-co-noir verify --proof out/proofs/proof.0.proof --vk verification_key.dat --crs bn254_g2.dat
+co-noir verify --proof out/proofs/proof.0.dat --vk verification_key.dat --crs bn254_g2.dat
 
 ```

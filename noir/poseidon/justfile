@@ -18,6 +18,6 @@ run-witness-generation:
 
 # runs the proof generation on three nodes
 run-proof-honk:
-	co-noir generate-proof --witness out/witness/witness.wtns.0.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party0.toml --out out/proofs/proof.0.proof --public-input out/proofs/public_input.0.json --circuit target/poseidon.json &
-	RUST_LOG="error" co-noir generate-proof --witness out/witness/witness.wtns.1.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party1.toml --out out/proofs/proof.1.proof --public-input out/proofs/public_input.1.json --circuit target/poseidon.json &
-	RUST_LOG="error" co-noir generate-proof --witness out/witness/witness.wtns.2.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party2.toml --out out/proofs/proof.2.proof --public-input out/proofs/public_input.2.json --circuit target/poseidon.json
+	co-noir generate-proof --witness out/witness/witness.wtns.0.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party0.toml --out out/proofs/proof.0.dat --public-input out/proofs/public_input.0.json --circuit target/poseidon.json &
+	RUST_LOG="error" co-noir generate-proof --witness out/witness/witness.wtns.1.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party1.toml --out out/proofs/proof.1.dat --public-input out/proofs/public_input.1.json --circuit target/poseidon.json &
+	RUST_LOG="error" co-noir generate-proof --witness out/witness/witness.wtns.2.shared --crs bn254_g1.dat --protocol REP3 --config ../../configs/party2.toml --out out/proofs/proof.2.dat --public-input out/proofs/public_input.2.json --circuit target/poseidon.json
