@@ -241,7 +241,7 @@ In contrast to `circom` where we can extract the verification key from the `zkey
 co-noir create-vk --circuit target/poseidon.json --crs bn254_g1.dat --vk verification_key.dat
 ```
 
-### as
+### Verifying the Proof with co-circom
 Finally verify the proof:
 ```bash
 # verify proof
