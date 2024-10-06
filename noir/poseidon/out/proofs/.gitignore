@@ -3,7 +3,3 @@
 
 # But not these files...
 !.gitignore
-!secret_shared_inputs
-!merged_inputs
-!proofs
-!witness
