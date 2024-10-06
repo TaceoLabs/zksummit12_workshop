@@ -212,7 +212,7 @@ co-noir generate-witness --input out/merged_inputs/input.toml.2.shared --circuit
 or 
 
 ```bash
-just run-generate-witness
+just run-witness-generation
 ```
 
 ### Generating the Proof
