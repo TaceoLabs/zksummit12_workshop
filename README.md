@@ -150,7 +150,7 @@ snarkjs groth16 verify verification_key.json out/proofs/public_input.0.json out/
 ```
 
 ## Poseidon with co-noir
-n this example, we’ll demonstrate how to compute a Poseidon hash from two different sources. Therfore we work in the `noir/poseidon folder`. The following code snippet describes the circuit we want to prove:
+In this example, we’ll demonstrate how to compute a Poseidon hash from two different sources. Therfore we work in the `noir/poseidon folder`. The following code snippet describes the circuit we want to prove:
 
 ```rust
 use dep::std::hash::poseidon;
