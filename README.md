@@ -18,7 +18,7 @@ By the end of this setup, you should have the following tools installed:
 * `co-circom`
 * `circom`
 * `snarkJS`
-* `Noir`
+* `Noir` (`nargo`)
 
 ## The Millionaires Problem
  For this example, we'll work in the `/circom/mill_problem` folder. . To make things easier, we’ve provided a `justfile` that automates all the necessary commands. Since you’ll need to run specific commands on all "MPC-nodes" simultaneously, it can be a bit cumbersome to manage this in Docker. That's why we’ve included the `justfile` — and don't worry, the container already comes with `just` pre-installed to streamline the process.
