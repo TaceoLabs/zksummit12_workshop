@@ -21,7 +21,7 @@ By the end of this setup, you should have the following tools installed:
 * `Noir`
 
 ## The Millionaires Problem
- For this example, we'll work in the `/circom/mill_problem` folder. . To make things easier, we’ve provided a `justfile` that executes all commands.that automates all the necessary commands. Since you’ll need to run specific commands on all "MPC-nodes" simultaneously, it can be a bit cumbersome to manage this in Docker. That's why we’ve included the `justfile` — and don't worry, the container already comes with `just` pre-installed to streamline the process.
+ For this example, we'll work in the `/circom/mill_problem` folder. . To make things easier, we’ve provided a `justfile` that automates all the necessary commands. Since you’ll need to run specific commands on all "MPC-nodes" simultaneously, it can be a bit cumbersome to manage this in Docker. That's why we’ve included the `justfile` — and don't worry, the container already comes with `just` pre-installed to streamline the process.
 
 ### Compiling the Circuit
 
@@ -55,7 +55,7 @@ co-circom split-input --circuit mill_problem.circom --input input.alice.json --p
 #split input Bob
 co-circom split-input --circuit mill_problem.circom --input input.bob.json --protocol REP3 --out-dir out/secret_shared_inputs/ --curve BN254
 ```
-or  use the `justfile`
+or use the `justfile`
 
 ```bash
 just split-input
@@ -150,7 +150,7 @@ snarkjs groth16 verify verification_key.json out/proofs/public_input.0.json out/
 ```
 
 ## Poseidon with co-noir
-In this example, we’ll demonstrate how to compute a Poseidon hash from two different sources. Therfore we work in the `noir/poseidon folder`. The following code snippet describes the circuit we want to prove:
+In this example, we’ll demonstrate how to compute a Poseidon hash from two different sources. Therefore we work in the `noir/poseidon folder`. The following code snippet describes the circuit we want to prove:
 
 ```rust
 use dep::std::hash::poseidon;
