@@ -21,7 +21,7 @@ RUN curl -L https://raw.githubusercontent.com/noir-lang/noirup/main/install | ba
 RUN /root/.nargo/bin/noirup
 
 # install co-circom
-RUN git clone https://github.com/TaceoLabs/collaborative-circom.git && cargo install --path collaborative-circom/co-circom/co-circom/ && cargo install --path collaborative-circom/co-noir/co-noir/
+RUN git clone https://github.com/TaceoLabs/collaborative-circom.git --branch co-circom-v0.5.1 && cargo install --path collaborative-circom/co-circom/co-circom/ && cargo install --path collaborative-circom/co-noir/co-noir/
 RUN rm -rf collaborative-circom
 
 # download files for Demo
